@@ -1,7 +1,6 @@
 #include "main.h"
 
-const int cata_stop = 275;
-
+const int cata_stop = 260;
 bool firingCata = false;
 bool firstFire = false;
 
@@ -13,13 +12,13 @@ int cata_task() {
             std::cout << rotation << std::endl;
             if (rotation <= cata_stop) {
                 if (firstFire) {
-                    cata.move_velocity(170);
+                    cata.move_velocity(200);
                     pros::delay(1000);
                 } else {
                     cata.move_velocity(0);
                     firingCata = false;
                 }
-            } else if (rotation <= (cata_stop + 30)) {
+            } else if (rotation <= (cata_stop + 20)) {
                 cata.move_velocity(50);
             } else if (rotation <= 360) {
                 cata.move_velocity(200);

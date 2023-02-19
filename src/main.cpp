@@ -76,8 +76,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Not facing roller", not_facing_roller),
-    Auton("Facing roller", facing_roller),
+    //Auton("Not facing roller", not_facing_roller),
+    //Auton("Facing roller", facing_roller),
     Auton("Skills", skills)
   });
 
