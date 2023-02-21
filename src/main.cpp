@@ -169,8 +169,12 @@ void opcontrol() {
       reverse_roller();
     }
 
-    if (master.get_digital_new_press(DIGITAL_UP)) {
+    if (master.get_digital(DIGITAL_UP) && master.get_digital(DIGITAL_X)) {
       fire_expansion();
+    }
+
+    if (master.get_digital_new_press(DIGITAL_L2)) {
+      fire_cata();
     }
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
