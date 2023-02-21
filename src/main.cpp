@@ -67,9 +67,6 @@ void initialize() {
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
 
-  cataRotation.set_position(0);
-  pros::Task cata(cata_task);
-
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
   // chassis.set_left_curve_buttons (pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT); // If using tank, only the left side is used. 
   // chassis.set_right_curve_buttons(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
@@ -85,7 +82,9 @@ void initialize() {
   chassis.initialize();
   ez::as::initialize();
 
-  expansion.set_value(0);
+  pros::Task cata(cata_task);
+  cataRotation.set_position(CATA_STOP);
+  expansion.set_value(PISTON_RETRACT);
 }
 
 

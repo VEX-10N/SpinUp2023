@@ -163,63 +163,14 @@ void skills() {
 
   pros::delay(2000);
 
-  chassis.set_drive_pid(-22, DRIVE_SPEED);
+  chassis.set_drive_pid(-50, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.set_turn_pid(45, TURN_SPEED);
   chassis.wait_drive();
   
-  chassis.set_drive_pid(1000, DRIVE_SPEED);
+  chassis.set_drive_pid(50, DRIVE_SPEED);
   chassis.wait_drive();
-
-  chassis.set_drive_pid(-30, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(270, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(1000, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-90, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(180, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(150, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  pros::delay(500);
-
-  move_roller(-450, 150);
-
-  pros::delay(1000);
-
-  chassis.set_drive_pid(-100, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(270, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(100, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  move_roller(-450, 150);
-
-  pros::delay(1000);
-
-  chassis.set_drive_pid(-50, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive(); 
-
-  chassis.set_drive_pid(-50, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(235, TURN_SPEED);
-  chassis.wait_drive(); 
 
   pros::delay(2000);
   
