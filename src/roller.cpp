@@ -19,3 +19,10 @@ void reverse_roller() {
 void move_roller(double distance, double speed) {
     roller.move_relative(distance, speed);
 }
+
+void wait_roller() {
+  while (roller.get_target_position() != roller.get_position()) {
+    pros::delay(10);
+  }
+  pros::delay(250);
+}

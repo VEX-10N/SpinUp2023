@@ -109,18 +109,18 @@ void turn_example() {
 }
 
 void not_facing_roller() {
-  chassis.set_drive_pid(4, DRIVE_SPEED, true);
+  chassis.set_drive_pid(100, DRIVE_SPEED, true);
   chassis.wait_drive();
 
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(2, DRIVE_SPEED);
+  chassis.set_drive_pid(150, DRIVE_SPEED);
   chassis.wait_drive();
 
   pros::delay(1000);
 
-  roller_auton.move_relative(-600, 75);
+  roller_auton.move_relative(-400, 75);
 }
 
 void facing_roller() {
@@ -129,7 +129,7 @@ void facing_roller() {
 
   pros::delay(500);
 
-  roller_auton.move_relative(-600, 75);
+  roller_auton.move_relative(-400, 75);
 }
 
 void auton_wp() {
@@ -139,14 +139,14 @@ void auton_wp() {
 void skills() {
   pros::delay(1000);
 
-  chassis.set_drive_pid(50, DRIVE_SPEED);
+  chassis.set_drive_pid(100, DRIVE_SPEED);
   chassis.wait_drive();
 
-  pros::delay(1000);
+  pros::delay(500);
 
-  move_roller(-450, 150);
+  move_roller(-800, 150);
 
-  pros::delay(2000);
+  wait_roller();
 
   chassis.set_drive_pid(-100, DRIVE_SPEED);
   chassis.wait_drive();
@@ -161,7 +161,7 @@ void skills() {
 
   move_roller(-450, 150);
 
-  pros::delay(2000);
+  wait_roller();
 
   chassis.set_drive_pid(-50, DRIVE_SPEED);
   chassis.wait_drive();

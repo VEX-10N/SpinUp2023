@@ -35,5 +35,12 @@ void fire_cata() {
     firstFire = true;
 }
 
+void wait_cata() {
+  while (firingCata) {
+    pros::delay(10);
+  }
+  pros::delay(250);
+}
+
 
 
