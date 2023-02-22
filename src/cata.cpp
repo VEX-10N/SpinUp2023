@@ -11,13 +11,11 @@ int cata_task() {
             if (rotation <= CATA_STOP) {
                 if (firstFire) {
                     firstFire = false;
-                    std::cout << rotation << std::endl;
                     cata.move_velocity(200);
                     pros::delay(1000);
                 } else {
                     cata.move_velocity(0);
                     firingCata = false;
-                    std::cout << rotation << std::endl;
                 }
             } else if (rotation <= (CATA_STOP + 15)) {
                 cata.move_velocity(30);

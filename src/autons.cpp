@@ -179,3 +179,7 @@ void skills() {
   
   fire_expansion();
 }
+
+void hold_position() {
+  
+}

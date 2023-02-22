@@ -10,6 +10,7 @@ void not_facing_roller();
 void facing_roller();
 void skills();
 void auton_wp();
+void hold_position();
 
 void default_constants();
 void one_mogo_constants();
