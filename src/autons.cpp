@@ -118,13 +118,13 @@ void not_facing_roller() {
   chassis.set_drive_pid(150, DRIVE_SPEED);
   chassis.wait_drive();
 
-  pros::delay(1000);
+  pros::delay(500);
 
   roller_auton.move_relative(-400, 75);
 }
 
 void facing_roller() {
-  chassis.set_drive_pid(2, DRIVE_SPEED);
+  chassis.set_drive_pid(100, DRIVE_SPEED);
   chassis.wait_drive();
 
   pros::delay(500);
