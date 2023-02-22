@@ -73,8 +73,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    //Auton("Not facing roller", not_facing_roller),
-    //Auton("Facing roller", facing_roller),
+    Auton("Not facing roller", not_facing_roller),
+    Auton("Facing roller", facing_roller),
     Auton("Skills", skills)
   });
 
@@ -152,7 +152,7 @@ void autonomous() {
  */
 void opcontrol() {
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
   while (true) {
     //chassis.tank(); // Tank control
     chassis.arcade_standard(ez::SPLIT); // Standard split arcade
