@@ -163,16 +163,19 @@ void skills() {
 
   wait_roller();
 
-  chassis.set_drive_pid(-50, DRIVE_SPEED);
+  chassis.set_drive_pid(-25, DRIVE_SPEED);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.set_turn_pid(0, TURN_SPEED);
   chassis.wait_drive();
   
   chassis.set_drive_pid(50, DRIVE_SPEED);
   chassis.wait_drive();
 
-  pros::delay(2000);
+  chassis.set_turn_pid(45, TURN_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(1000);
   
   fire_expansion();
 }
