@@ -21,8 +21,8 @@ void move_roller(double distance, double speed) {
 }
 
 void wait_roller() {
-  while (roller.get_target_position() != roller.get_position()) {
+  while (fabs(roller.get_target_position() - roller.get_position()) < 2) {
     pros::delay(10);
   }
-  pros::delay(250);
+  pros::delay(500);
 }

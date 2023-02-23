@@ -62,7 +62,7 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
-  chassis.set_active_brake(0.1); // Sets the active brake kP. We recommend 0.1.
+  chassis.set_active_brake(0); // Sets the active brake kP. We recommend 0.1.
   chassis.set_curve_default(0, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  
   default_constants(); // Set the drive to your own constants from autons.cpp!
   exit_condition_defaults(); // Set the exit conditions to your own constants from autons.cpp!
@@ -73,18 +73,18 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Hold position", hold_position),
-    Auton("Not facing roller", not_facing_roller),
-    Auton("Facing roller", facing_roller),
-    Auton("Skills", skills)
+    Auton("Hold Position", hold_position),
+    Auton("Not Facing Roller", not_facing_roller),
+    Auton("Facing Roller", facing_roller),
+    Auton("Passive Programming Skills", skills_passive)
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
 
+  cataRotation.set_position(CATA_STOP); 
   pros::Task cata(cata_task);
-  cataRotation.set_position(CATA_STOP);
   expansion.set_value(PISTON_RETRACT);
 }
 

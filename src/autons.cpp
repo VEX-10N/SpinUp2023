@@ -136,7 +136,7 @@ void auton_wp() {
   
 }
 
-void skills() {
+void skills_passive() {
   pros::delay(1000);
 
   chassis.set_drive_pid(100, DRIVE_SPEED);
@@ -159,7 +159,7 @@ void skills() {
 
   pros::delay(500);
 
-  move_roller(-450, 150);
+  move_roller(-800, 150);
 
   wait_roller();
 
@@ -181,5 +181,5 @@ void skills() {
 }
 
 void hold_position() {
-  
+
 }
