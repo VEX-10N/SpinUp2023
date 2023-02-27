@@ -40,5 +40,10 @@ void wait_cata() {
   pros::delay(250);
 }
 
+void init_cata() {
+  cataRotation.set_position(CATA_STOP); 
+  pros::Task cata(cata_task);
+}
+
 
 

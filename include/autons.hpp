@@ -8,7 +8,7 @@ void drive_example();
 void turn_example();
 void not_facing_roller();
 void facing_roller();
-void skills_passive();
+void skills();
 void auton_wp();
 void hold_position();
 

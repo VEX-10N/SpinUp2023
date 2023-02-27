@@ -16,8 +16,9 @@ void reverse_roller() {
   }
 }
 
-void move_roller(double distance, double speed) {
-    roller.move_relative(distance, speed);
+void move_roller(int distance) {
+    roller.move_relative(distance, 175);
+    wait_roller();
 }
 
 void wait_roller() {

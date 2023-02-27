@@ -73,21 +73,19 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Hold Position", hold_position),
     Auton("Not Facing Roller", not_facing_roller),
     Auton("Facing Roller", facing_roller),
-    Auton("Passive Programming Skills", skills_passive)
+    Auton("Don't Run", hold_position),
+    Auton("Skills", skills)
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
 
-  cataRotation.set_position(CATA_STOP); 
-  pros::Task cata(cata_task);
-  expansion.set_value(PISTON_RETRACT);
+  init_cata();
+  init_expansion();
 }
-
 
 
 /**

@@ -14,9 +14,6 @@ const int DRIVE_SPEED = 110; // This is 110/127 (around 87% of max speed).  We d
 const int TURN_SPEED  = 90;
 const int SWING_SPEED = 90;
 
-pros::Motor roller_auton (5, MOTOR_GEARSET_36, true);
-pros::ADIDigitalOut expansion_auton(3);
-
 ///
 // Constants
 ///
@@ -66,7 +63,19 @@ void modified_exit_condition() {
   chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
 }
 
+void move_for(double inches) {
+  bool slew = false;
+  if (inches > 14) {
+    slew = true;
+  }
+  chassis.set_drive_pid(inches, DRIVE_SPEED, slew, true);
+  chassis.wait_drive();
+}
 
+void turn_to(double degrees) {
+  chassis.set_turn_pid(degrees, TURN_SPEED);
+  chassis.wait_drive();
+}
 
 ///
 // Drive Example
@@ -109,74 +118,110 @@ void turn_example() {
 }
 
 void not_facing_roller() {
-  chassis.set_drive_pid(100, DRIVE_SPEED, true);
-  chassis.wait_drive();
+  move_for(24);
 
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
+  turn_to(90);
 
-  chassis.set_drive_pid(150, DRIVE_SPEED);
-  chassis.wait_drive();
+  move_for(24);
 
-  pros::delay(500);
-
-  roller_auton.move_relative(-400, 75);
+  move_roller(-175);
 }
 
 void facing_roller() {
-  chassis.set_drive_pid(100, DRIVE_SPEED);
-  chassis.wait_drive();
+  move_for(12);
 
-  pros::delay(500);
-
-  roller_auton.move_relative(-400, 75);
+  move_roller(-175);
 }
 
 void auton_wp() {
   
 }
 
-void skills_passive() {
-  pros::delay(1000);
-
-  chassis.set_drive_pid(100, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  pros::delay(500);
-
-  move_roller(-800, 150);
-
-  wait_roller();
-
-  chassis.set_drive_pid(-100, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(90, TURN_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(150, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  pros::delay(500);
-
-  move_roller(-800, 150);
-
-  wait_roller();
-
-  chassis.set_drive_pid(-25, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(0, TURN_SPEED);
-  chassis.wait_drive();
-  
-  chassis.set_drive_pid(50, DRIVE_SPEED);
-  chassis.wait_drive();
-
-  chassis.set_turn_pid(45, TURN_SPEED);
-  chassis.wait_drive();
-
-  pros::delay(1000);
-  
+void skills() {
+  //go to goal
+  move_for(-48);
+  fire_cata();
+  // get roller
+  move_for(60);
+  turn_to(90);
+  move_for(24);
+  move_roller(-450);
+  //reposition
+  move_for(-4);
+  turn_to(270);
+  //intake disc
+  toggle_roller();
+  move_for(24);
+  toggle_roller();
+  //go to goal
+  turn_to(0);
+  move_for(24);
+  turn_to(90);
+  move_for(-48);
+  pros::delay(250);
+  fire_cata();
+  // go to roller
+  move_for(48);
+  turn_to(0);
+  move_for(24);
+  move_roller(-450);
+  //go to matchload
+  move_for(-4);
+  turn_to(270);
+  move_for(24);
+  turn_to(0);
+  move_for(24);
+  pros::delay(3000);
+  // go to goal
+  move_for(-4);
+  turn_to(90);
+  move_for(-24);
+  fire_cata();
+  // go to matchload
+  move_for(24);
+  turn_to(0);
+  move_for(24);
+  pros::delay(3000);
+  // go to goal
+  move_for(-4);
+  turn_to(90);
+  move_for(-24);
+  fire_cata();
+  //go to matchload
+  move_for(24);
+  turn_to(180);
+  move_for(160);
+  pros::delay(3000);
+  // go to goal
+  move_for(-4);
+  turn_to(270);
+  move_for(-24);
+  fire_cata();
+  // go to matchload
+  move_for(24);
+  turn_to(180);
+  move_for(24);
+  pros::delay(3000);
+  // go to goal
+  move_for(-4);
+  turn_to(270);
+  move_for(-24);
+  fire_cata();
+  // go to roller
+  move_for(-72);
+  turn_to(180);
+  move_for(24);
+  move_roller(-450);
+  // go to roller
+  move_for(-28);
+  turn_to(270);
+  move_for(48);
+  move_roller(-450);
+  // position expansion
+  move_for(-4);
+  turn_to(180);
+  move_for(12);
+  turn_to(225);
   fire_expansion();
 }
 
