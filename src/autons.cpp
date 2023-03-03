@@ -222,7 +222,7 @@ void skills() {
   turn_to(180);
   move_for(12);
   turn_to(225);
-  fire_expansion();
+  //fire_expansion();
 }
 
 void hold_position() {
